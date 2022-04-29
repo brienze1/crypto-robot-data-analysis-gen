@@ -1,6 +1,6 @@
 package org.brienze.crypto.data.analysis.usecase
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import org.brienze.crypto.data.analysis.adapter.AnalysisEventService
 import org.brienze.crypto.data.analysis.adapter.CandleServiceAdapter
 import org.brienze.crypto.data.analysis.enums.Interval
 import org.brienze.crypto.data.analysis.enums.Symbol
@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component
 class UpdateAnalysisUseCase {
 
     @Autowired
-    lateinit var objectMapper: ObjectMapper
+    private lateinit var candleService: CandleServiceAdapter
 
     @Autowired
-    lateinit var candleService: CandleServiceAdapter
+    private lateinit var analysisService: AnalysisService
 
     @Autowired
-    lateinit var analysisService: AnalysisService
+    private lateinit var analysisEventService: AnalysisEventService
 
     fun update(interval: Interval) {
         println("Initializing " + interval.description + " with value " + interval.value)
@@ -27,8 +27,7 @@ class UpdateAnalysisUseCase {
 
         val analysisIndicators = analysisService.createAnalysisIndicators(listOfCandles, interval)
 
-        //Save and/or send
-        println(objectMapper.writeValueAsString(analysisIndicators))
+        analysisEventService.sendEvent(analysisIndicators)
     }
 
 }

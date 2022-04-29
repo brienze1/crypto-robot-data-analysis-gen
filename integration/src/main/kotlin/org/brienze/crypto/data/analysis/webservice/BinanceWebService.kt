@@ -20,7 +20,7 @@ import java.util.*
 class BinanceWebService : CandleServiceAdapter {
 
     @Autowired
-    lateinit var restTemplate: RestTemplate
+    private lateinit var restTemplate: RestTemplate
 
     override fun getLastCandlesByInterval(quantity: Int, interval: Interval, symbol: Symbol): List<Candle> {
         val request = HttpEntity<Any>(null, null)
@@ -38,7 +38,7 @@ class BinanceWebService : CandleServiceAdapter {
             Array<Array<String>>::class.java
         )
 
-        if(response.body == null){
+        if (response.body == null) {
             throw BinanceNullResponseBodyException()
         }
 
