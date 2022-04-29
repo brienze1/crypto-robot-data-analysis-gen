@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-class AnalysisSnsEventService: AnalysisEventService, BasicEventService() {
+class AnalysisSnsEventService: AnalysisEventService, SnsEventService() {
 
     @Value("\${event.analysis.topic.arn}")
     private lateinit var analysisTopicArn: String

@@ -5,7 +5,7 @@ import com.amazonaws.services.sns.model.PublishRequest
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
 
-abstract class BasicEventService {
+abstract class SnsEventService {
 
     @Autowired
     private lateinit var objectMapper: ObjectMapper
