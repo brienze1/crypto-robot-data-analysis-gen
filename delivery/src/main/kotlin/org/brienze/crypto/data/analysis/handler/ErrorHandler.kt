@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component
 
 @Aspect
 @Component
-class ErrorHandler(
+class ErrorHandler {
+
     @Autowired
-    val objectMapper: ObjectMapper
-) {
+    lateinit var objectMapper: ObjectMapper
 
     @AfterThrowing(
-        pointcut = "execution(* org.brienze.crypto.data.analysis.scheduler.Scheduler.*(..))",
+        pointcut = "execution(* org.brienze.crypto.data.analysis.scheduler.UpdateAnalysisScheduler.*(..))",
         throwing = "ex"
     )
     fun afterThrowing(ex: Exception) {

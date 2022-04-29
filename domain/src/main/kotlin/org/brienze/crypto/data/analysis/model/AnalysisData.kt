@@ -11,8 +11,6 @@ class AnalysisData(
     val exponentialMovingAverages: MutableMap<Period, ExponentialMovingAverage> = mutableMapOf()
 
     init {
-        listOfCandles.sortedByDescending { candle -> candle.closeTime }
-
         var i = 0
         var totalSum: BigDecimal = BigDecimal.ZERO
         while(listOfCandles.getOrNull(i) != null && listOfCandles.getOrNull(i+1) != null && i < 200){

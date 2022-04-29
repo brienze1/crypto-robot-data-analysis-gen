@@ -1,9 +1,9 @@
 package org.brienze.crypto.data.analysis.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import org.brienze.crypto.data.analysis.enums.Factor
 import org.brienze.crypto.data.analysis.enums.Indicator
 import org.brienze.crypto.data.analysis.enums.Period
-import org.springframework.beans.factory.annotation.Value
 import java.math.BigDecimal
 
 abstract class MovingAverage(
@@ -11,10 +11,6 @@ abstract class MovingAverage(
     @JsonIgnore private val lastCandle: Candle,
     @JsonIgnore private val currentCandle: Candle,
 ) {
-
-    @Value("\${smoothening.factor.value:0.3}")
-    @JsonIgnore
-    private lateinit var smootheningFactor: BigDecimal
 
     lateinit var value: BigDecimal
         protected set
@@ -59,7 +55,7 @@ abstract class MovingAverage(
     }
 
     protected fun calculateExponentialMovingAverage(totalValue: BigDecimal, period: Period, lastCandle: Candle): BigDecimal {
-        return smootheningFactor.times(lastCandle.close) + (BigDecimal.ONE.minus(smootheningFactor)) * calculateSimpleMovingAverage(totalValue, period)
+        return Factor.SMOOTHENING_FACTOR.value.times(lastCandle.close) + (BigDecimal.ONE.minus(Factor.SMOOTHENING_FACTOR.value)) * calculateSimpleMovingAverage(totalValue, period)
     }
 
 }
