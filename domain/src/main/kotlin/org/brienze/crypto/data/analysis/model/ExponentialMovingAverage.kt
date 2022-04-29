@@ -9,7 +9,7 @@ class ExponentialMovingAverage(
     period: Period,
     lastCandle: Candle,
     currentCandle: Candle,
-) : MovingAverage(period, lastCandle, currentCandle) {
+) : MovingAverage(period, currentCandle) {
 
     init {
         value = calculateExponentialMovingAverage(totalValue, period, lastCandle).setScale(5, RoundingMode.UP)

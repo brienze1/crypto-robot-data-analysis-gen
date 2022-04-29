@@ -8,7 +8,6 @@ import java.math.BigDecimal
 
 abstract class MovingAverage(
     private val period: Period,
-    @JsonIgnore private val lastCandle: Candle,
     @JsonIgnore private val currentCandle: Candle,
 ) {
 
@@ -19,24 +18,24 @@ abstract class MovingAverage(
 
     fun calculateIndicator(lastMovingAverages: Map<Period, MovingAverage>, currentMovingAverages: Map<Period, MovingAverage>) {
         var indicatorValue = 0
-        if (lastCandle.close < value && currentCandle.close > value) {
+        if (lastMovingAverages.getValue(this.period).currentCandle.close < value && currentCandle.close > value) {
             indicatorValue++
-        } else if (lastCandle.close > value && currentCandle.close < value) {
+        } else if (lastMovingAverages.getValue(this.period).currentCandle.close > value && currentCandle.close < value) {
             indicatorValue--
         }
 
         for(period: Period in Period.values()) {
             if(this.period.value < period.value) {
-                if(value < lastMovingAverages.getValue(period).value && value > currentMovingAverages.getValue(period).value) {
-                    indicatorValue++
-                } else if(value > lastMovingAverages.getValue(period).value && value < currentMovingAverages.getValue(period).value) {
-                    indicatorValue--
+                if(lastMovingAverages.getValue(this.period).value < lastMovingAverages.getValue(period).value && value > currentMovingAverages.getValue(period).value) {
+                    indicatorValue += 2
+                } else if(lastMovingAverages.getValue(this.period).value > lastMovingAverages.getValue(period).value && value < currentMovingAverages.getValue(period).value) {
+                    indicatorValue -= 2
                 }
             } else if(this.period.value > period.value) {
-                if(value < lastMovingAverages.getValue(period).value && value > currentMovingAverages.getValue(period).value) {
-                    indicatorValue--
-                } else if(value > lastMovingAverages.getValue(period).value && value < currentMovingAverages.getValue(period).value) {
-                    indicatorValue++
+                if(lastMovingAverages.getValue(this.period).value < lastMovingAverages.getValue(period).value && value > currentMovingAverages.getValue(period).value) {
+                    indicatorValue -= 2
+                } else if(lastMovingAverages.getValue(this.period).value > lastMovingAverages.getValue(period).value && value < currentMovingAverages.getValue(period).value) {
+                    indicatorValue += 2
                 }
             }
         }

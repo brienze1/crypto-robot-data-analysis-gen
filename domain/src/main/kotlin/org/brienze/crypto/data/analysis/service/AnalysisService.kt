@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 class AnalysisService {
 
     fun createAnalysisIndicators(listOfCandles: List<Candle>, interval: Interval): AnalysisIndicators {
-        val lastAnalysisData = AnalysisData(listOfCandles.dropLast(interval.intervalDropValue))
+        val lastAnalysisData = AnalysisData(listOfCandles.subList(interval.intervalDropValue, listOfCandles.size-1))
         val currentAnalysisData = AnalysisData(listOfCandles)
 
         return AnalysisIndicators(interval, currentAnalysisData, lastAnalysisData)

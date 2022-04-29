@@ -7,9 +7,8 @@ import java.math.RoundingMode
 class SimpleMovingAverage(
     totalValue: BigDecimal,
     period: Period,
-    lastCandle: Candle,
     currentCandle: Candle,
-) : MovingAverage(period, lastCandle, currentCandle) {
+) : MovingAverage(period, currentCandle) {
 
     init {
         value = calculateSimpleMovingAverage(totalValue, period).setScale(5, RoundingMode.UP)
