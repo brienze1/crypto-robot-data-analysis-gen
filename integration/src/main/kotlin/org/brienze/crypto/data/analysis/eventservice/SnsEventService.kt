@@ -17,7 +17,6 @@ abstract class SnsEventService {
         println(objectMapper.writeValueAsString(messageObject))
         println(topic)
 
-
         val result = sns.publish(PublishRequest()
                 .withMessage(objectMapper.writeValueAsString(messageObject))
                 .withTopicArn(topic))

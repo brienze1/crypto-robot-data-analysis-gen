@@ -6,8 +6,11 @@ import org.springframework.scheduling.annotation.EnableScheduling
 
 @SpringBootApplication
 @EnableScheduling
-class Application
-
-fun main(args: Array<String>) {
-    runApplication<Application>(*args)
+class Application {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            runApplication<Application>(*args)
+        }
+    }
 }
