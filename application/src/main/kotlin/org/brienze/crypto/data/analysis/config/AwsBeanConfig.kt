@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Profile
 class AwsBeanConfig {
 
     @Bean
-    @Profile("localstack", "dev")
+    @Profile("localstack")
     fun localStackAmazonSQSAsyncClient(): AmazonSNS {
         return AmazonSNSClient.builder()
             .withEndpointConfiguration(
@@ -28,7 +28,7 @@ class AwsBeanConfig {
     }
 
     @Bean
-    @Profile("!localstack & !dev")
+    @Profile("!localstack & !cucumber-test")
     fun amazonSQSAsyncClient(): AmazonSNS {
         return AmazonSNSClient.builder()
             .build()
