@@ -7,6 +7,7 @@ import org.brienze.crypto.data.analysis.enums.Symbol
 import org.brienze.crypto.data.analysis.exception.BinanceNullResponseBodyException
 import org.brienze.crypto.data.analysis.model.Candle
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpMethod
 import org.springframework.http.ResponseEntity
@@ -15,9 +16,11 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
 import java.util.*
 
-
 @Component
 class BinanceWebService : CandleServiceAdapter {
+
+    @Value("\${api.url.binance.klines}")
+    private lateinit var binanceUrl: String
 
     @Autowired
     private lateinit var restTemplate: RestTemplate
@@ -27,8 +30,7 @@ class BinanceWebService : CandleServiceAdapter {
 
         val response: ResponseEntity<Array<Array<String>>> = restTemplate.exchange(
             UriComponentsBuilder
-                .fromHttpUrl("https://api.binance.com")
-                .path("/api/v3/klines")
+                .fromHttpUrl(binanceUrl)
                 .queryParam("limit", quantity)
                 .queryParam("interval", interval.value)
                 .queryParam("symbol", symbol)

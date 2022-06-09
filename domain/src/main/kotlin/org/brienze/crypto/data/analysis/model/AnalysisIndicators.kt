@@ -8,7 +8,7 @@ class AnalysisIndicators(
     lastAnalysisData: AnalysisData
 ) {
 
-    private val analysisData: AnalysisData
+    val analysisData: AnalysisData
 
     init {
         currentAnalysisData.simpleMovingAverages

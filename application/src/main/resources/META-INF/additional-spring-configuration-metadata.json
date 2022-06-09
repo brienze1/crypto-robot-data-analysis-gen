@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "event.analysis.topic.arn",
+      "type": "java.lang.String",
+      "description": "Data analysis SNS topic arn."
+    },
+    {
+      "name": "api.url.binance.klines",
+      "type": "java.lang.String",
+      "description": "Binance kline url for GET operations."
+    }
+  ] }

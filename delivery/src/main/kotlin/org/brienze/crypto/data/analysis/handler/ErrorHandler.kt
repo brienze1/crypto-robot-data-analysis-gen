@@ -1,6 +1,6 @@
 package org.brienze.crypto.data.analysis.handler
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import com.google.gson.Gson
 import org.aspectj.lang.annotation.AfterThrowing
 import org.aspectj.lang.annotation.Aspect
 import org.brienze.crypto.data.analysis.dto.ErrorResponseDto
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component
 class ErrorHandler {
 
     @Autowired
-    lateinit var objectMapper: ObjectMapper
+    lateinit var mapper: Gson
 
     @AfterThrowing(
         pointcut = "execution(* org.brienze.crypto.data.analysis.scheduler.UpdateAnalysisScheduler.*(..))",
@@ -20,7 +20,7 @@ class ErrorHandler {
     )
     fun afterThrowing(ex: Exception) {
         println("\n-------- Error Message Start ------\n")
-        println(objectMapper.writeValueAsString(ErrorResponseDto(ex)))
+        println(mapper.toJson(ErrorResponseDto(ex)))
         println("\n-------- Error Message End --------\n")
     }
 }

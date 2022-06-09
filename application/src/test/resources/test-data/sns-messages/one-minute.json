@@ -1,0 +1,69 @@
+{
+  "interval": "ONE_MINUTE",
+  "analysisData": {
+    "simpleMovingAverages": [
+      {
+        "period": "FIVE",
+        "value": 30211.77400,
+        "indicator": "STRONG_BUY"
+      },
+      {
+        "period": "TEN",
+        "value": 30201.14000,
+        "indicator": "STRONG_BUY"
+      },
+      {
+        "period": "TWENTY",
+        "value": 30193.50450,
+        "indicator": "BUY"
+      },
+      {
+        "period": "FIFTY",
+        "value": 30182.78000,
+        "indicator": "NEUTRAL"
+      },
+      {
+        "period": "HUNDRED",
+        "value": 30189.77020,
+        "indicator": "STRONG_BUY"
+      },
+      {
+        "period": "TWO_HUNDRED",
+        "value": 30196.59090,
+        "indicator": "STRONG_BUY"
+      }
+    ],
+    "exponentialMovingAverages": [
+      {
+        "period": "FIVE",
+        "value": 30207.37781,
+        "indicator": "BUY"
+      },
+      {
+        "period": "TEN",
+        "value": 30194.07801,
+        "indicator": "NEUTRAL"
+      },
+      {
+        "period": "TWENTY",
+        "value": 30189.09016,
+        "indicator": "SELL"
+      },
+      {
+        "period": "FIFTY",
+        "value": 30168.85701,
+        "indicator": "NEUTRAL"
+      },
+      {
+        "period": "HUNDRED",
+        "value": 30221.77414,
+        "indicator": "BUY"
+      },
+      {
+        "period": "TWO_HUNDRED",
+        "value": 30205.85163,
+        "indicator": "STRONG_BUY"
+      }
+    ]
+  }
+}

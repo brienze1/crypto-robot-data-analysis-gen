@@ -1,20 +1,20 @@
 package org.brienze.crypto.data.analysis.model
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import org.brienze.crypto.data.analysis.enums.Factor
 import org.brienze.crypto.data.analysis.enums.Indicator
 import org.brienze.crypto.data.analysis.enums.Period
 import java.math.BigDecimal
 
 abstract class MovingAverage(
-    private val period: Period,
-    @JsonIgnore private val currentCandle: Candle,
+    val period: Period,
+    private val currentCandle: Candle,
 ) {
 
     lateinit var value: BigDecimal
         protected set
 
-    private lateinit var indicator: Indicator
+    lateinit var indicator: Indicator
+        protected set
 
     fun calculateIndicator(lastMovingAverages: Map<Period, MovingAverage>, currentMovingAverages: Map<Period, MovingAverage>) {
         var indicatorValue = 0
