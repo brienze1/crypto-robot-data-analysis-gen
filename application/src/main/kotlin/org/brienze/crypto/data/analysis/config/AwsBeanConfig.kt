@@ -17,7 +17,7 @@ class AwsBeanConfig {
     fun localStackAmazonSQSAsyncClient(): AmazonSNS {
         return AmazonSNSClient.builder()
             .withEndpointConfiguration(
-                AwsClientBuilder.EndpointConfiguration("http://localhost:4566", "us-east-1")
+                AwsClientBuilder.EndpointConfiguration("http://localhost:4566", "sa-east-1")
             )
             .withCredentials(
                 AWSStaticCredentialsProvider(

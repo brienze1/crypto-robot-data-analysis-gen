@@ -1,5 +1,5 @@
 # ====== Event Config =======
-event.analysis.topic.arn: arn:aws:sns:us-east-1:000000000000:cryptoAnalysisTopic
+event.analysis.topic.arn: arn:aws:sns:sa-east-1:000000000000:cryptoAnalysisTopic
 
 # ====== Binance API Config =======
 api.url.binance.klines: https://api.binance.com/api/v3/klines
