@@ -89,6 +89,8 @@ WIP
 * [ ] Create Dockerfile 
 * [x] Create Docker compose for local infrastructure 
 * [ ] Document everything in Readme
+* [ ] Add timestamp to the event
+* [ ] Change periods from string to number in events
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
