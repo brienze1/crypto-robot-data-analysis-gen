@@ -169,7 +169,7 @@ To run the application locally, first a local infrastructure needs to be deploye
 - And then run the new created image:
   - Windows/macOS/Linux/WSL
     ```bash
-    docker run --network="host" -d -it -e SPRING_PROFILES_ACTIVE=docker crypto-robot-data-analysis-gen:latest 
+    docker run --network="host" -d -it -e SPRING_PROFILES_ACTIVE=docker crypto-robot-data-analysis-gen:latest bash -c "java -jar application/target/crypto-robot-analysis-generator.jar"
     ```
     
 ### Testing 
