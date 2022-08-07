@@ -17,7 +17,7 @@ class AwsBeanConfig {
     private lateinit var awsUrl: String
 
     @Bean
-    @Profile("localstack | local")
+    @Profile("!default & !cucumber-test")
     fun localStackAmazonSQSAsyncClient(): AmazonSNS {
         return AmazonSNSClient.builder()
             .withEndpointConfiguration(

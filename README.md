@@ -153,13 +153,14 @@ To run the application locally, first a local infrastructure needs to be deploye
 - Start the compiled application:
     - Windows/macOS/Linux/WSL
       ```bash
-      java -jar ./application/target/crypto-robot-analysis-generator.jar --spring.profiles.active=localstack
+      java -jar ./application/target/crypto-robot-analysis-generator.jar --spring.profiles.active=local
       ```
       
 - To stop the application just press Ctrl+C 
 
 #### Docker Input
 - In case you want to use a Docker container to run the application first you need to build the Docker image from Dockerfile:
+- Note: This may take a while to build (close to 5 min)
     - Windows/macOS/Linux/WSL
       ```bash
       docker build -t crypto-robot-data-analysis-gen .
@@ -168,7 +169,7 @@ To run the application locally, first a local infrastructure needs to be deploye
 - And then run the new created image:
   - Windows/macOS/Linux/WSL
     ```bash
-    docker run --rm -it crypto-robot-data-analysis-gen:latest
+    docker run --network="host" -d -it -e SPRING_PROFILES_ACTIVE=docker crypto-robot-data-analysis-gen:latest 
     ```
     
 ### Testing 

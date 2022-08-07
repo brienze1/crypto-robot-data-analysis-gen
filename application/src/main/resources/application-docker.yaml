@@ -1,8 +1,9 @@
 # ====== AWS Local Url =======
-aws.local.config.url: http://localhost:4566
+aws.local.config.url: http://127.0.0.1:4566
 
 # ====== Event Config =======
 event.analysis.topic.arn: arn:aws:sns:sa-east-1:000000000000:cryptoAnalysisTopic
 
 # ====== Binance API Config =======
 api.url.binance.klines: https://api.binance.com/api/v3/klines
+
