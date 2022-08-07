@@ -5,6 +5,7 @@ import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.services.sns.AmazonSNS
 import com.amazonaws.services.sns.AmazonSNSClient
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
@@ -12,12 +13,15 @@ import org.springframework.context.annotation.Profile
 @Configuration
 class AwsBeanConfig {
 
+    @Value("\${aws.local.config.url:}")
+    private lateinit var awsUrl: String
+
     @Bean
-    @Profile("localstack")
+    @Profile("localstack | local")
     fun localStackAmazonSQSAsyncClient(): AmazonSNS {
         return AmazonSNSClient.builder()
             .withEndpointConfiguration(
-                AwsClientBuilder.EndpointConfiguration("http://localhost:4566", "sa-east-1")
+                AwsClientBuilder.EndpointConfiguration(awsUrl, "sa-east-1")
             )
             .withCredentials(
                 AWSStaticCredentialsProvider(
@@ -28,7 +32,7 @@ class AwsBeanConfig {
     }
 
     @Bean
-    @Profile("!localstack & !cucumber-test")
+    @Profile("default")
     fun amazonSQSAsyncClient(): AmazonSNS {
         return AmazonSNSClient.builder()
             .build()
