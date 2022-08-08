@@ -82,11 +82,11 @@ WIP
 
 ### Roadmap
 
-* [ ] Implement Behaviour tests (BDD) with cucumber
+* [X] Implement Behaviour tests (BDD) with cucumber
 * [ ] Implement Unit tests 
 * [x] Implement application logic 
 * [x] Add maven wrapper to run mvn commands locally 
-* [ ] Create Dockerfile 
+* [x] Create Dockerfile 
 * [x] Create Docker compose for local infrastructure 
 * [ ] Document everything in Readme
 * [ ] Add timestamp to the event

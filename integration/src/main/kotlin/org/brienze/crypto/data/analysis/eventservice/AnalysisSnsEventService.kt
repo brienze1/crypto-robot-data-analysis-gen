@@ -3,7 +3,7 @@ package org.brienze.crypto.data.analysis.eventservice
 import com.amazonaws.services.sns.AmazonSNS
 import com.amazonaws.services.sns.model.PublishRequest
 import com.google.gson.Gson
-import org.brienze.crypto.data.analysis.adapter.AnalysisEventService
+import org.brienze.crypto.data.analysis.adapter.AnalysisEventAdapter
 import org.brienze.crypto.data.analysis.dto.AnalysisIndicatorsDto
 import org.brienze.crypto.data.analysis.model.AnalysisIndicators
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-class AnalysisSnsEventService: AnalysisEventService {
+class AnalysisSnsEventService: AnalysisEventAdapter {
 
     @Value("\${event.analysis.topic.arn}")
     private lateinit var analysisTopicArn: String
