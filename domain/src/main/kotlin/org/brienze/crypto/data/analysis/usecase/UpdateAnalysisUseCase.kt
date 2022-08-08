@@ -21,7 +21,7 @@ class UpdateAnalysisUseCase {
     private lateinit var analysisEventService: AnalysisEventAdapter
 
     fun update(interval: Interval) {
-        //TODO add loggers
+        //TODO add logger
         println("Initializing " + interval.description + " with value " + interval.value)
 
         val listOfCandles = candleService.getLastCandlesByInterval(500, interval, Symbol.BTCUSDT)
