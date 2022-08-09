@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import io.mockk.verify
 import org.brienze.crypto.data.analysis.dto.AnalysisIndicatorsDto
 import org.brienze.crypto.data.analysis.enums.Interval
@@ -15,10 +16,9 @@ import org.brienze.crypto.data.analysis.model.AnalysisIndicators
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.util.ReflectionTestUtils
 
-@ExtendWith(SpringExtension::class)
+@ExtendWith(MockKExtension::class)
 class AnalysisSnsEventServiceTest {
 
     @InjectMockKs

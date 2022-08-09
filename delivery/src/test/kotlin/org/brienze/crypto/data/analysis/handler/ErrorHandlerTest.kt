@@ -2,17 +2,17 @@ package org.brienze.crypto.data.analysis.handler
 
 import com.google.gson.Gson
 import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.junit5.MockKExtension
 import org.brienze.crypto.data.analysis.dto.ErrorResponseDto
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
-@ExtendWith(SpringExtension::class)
+@ExtendWith(MockKExtension::class)
 class ErrorHandlerTest {
 
     @InjectMockKs

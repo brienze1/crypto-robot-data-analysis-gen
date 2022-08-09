@@ -3,6 +3,7 @@ package org.brienze.crypto.data.analysis.webservice
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import io.mockk.verify
 import org.assertj.core.api.Assertions
 import org.brienze.crypto.data.analysis.dto.BinanceCandleListResponseDto
@@ -15,13 +16,12 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpMethod
 import org.springframework.http.ResponseEntity
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.util.ReflectionTestUtils
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
 import kotlin.properties.Delegates
 
-@ExtendWith(SpringExtension::class)
+@ExtendWith(MockKExtension::class)
 class BinanceWebServiceTest {
 
     @InjectMockKs

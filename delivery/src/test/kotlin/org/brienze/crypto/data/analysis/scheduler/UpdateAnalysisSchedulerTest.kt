@@ -3,15 +3,15 @@ package org.brienze.crypto.data.analysis.scheduler
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
 import io.mockk.verify
 import org.brienze.crypto.data.analysis.enums.Interval
 import org.brienze.crypto.data.analysis.usecase.UpdateAnalysisUseCase
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.test.context.junit.jupiter.SpringExtension
 
-@ExtendWith(SpringExtension::class)
+@ExtendWith(MockKExtension::class)
 class UpdateAnalysisSchedulerTest {
 
     @InjectMockKs

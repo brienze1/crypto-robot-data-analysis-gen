@@ -1,6 +1,7 @@
 package org.brienze.crypto.data.analysis.service
 
 import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.junit5.MockKExtension
 import org.assertj.core.api.Assertions
 import org.brienze.crypto.data.analysis.enums.Interval
 import org.brienze.crypto.data.analysis.model.AnalysisData
@@ -9,13 +10,12 @@ import org.brienze.crypto.data.analysis.model.Candle
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.math.BigDecimal
 import java.math.BigInteger
 import java.time.LocalDateTime
 import kotlin.random.Random
 
-@ExtendWith(SpringExtension::class)
+@ExtendWith(MockKExtension::class)
 class AnalysisServiceTest {
 
     @InjectMockKs
