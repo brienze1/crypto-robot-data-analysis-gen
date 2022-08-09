@@ -5,4 +5,5 @@ Feature: Scheduled Data Analysis Generation
     And the scheduled function was called
     When the data is sent via sns topic
     Then the data sent should be equal "test-data/sns-messages/one-minute.json" file
+    Then the field "timestamp" should not be null
 

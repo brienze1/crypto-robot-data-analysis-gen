@@ -27,6 +27,7 @@ import org.springframework.test.util.ReflectionTestUtils
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.io.Reader
+import kotlin.reflect.full.memberProperties
 
 
 @ContextConfiguration
@@ -55,6 +56,8 @@ class CucumberTestSteps {
     @Captor
     private var publishRequestCaptor = ArgumentCaptor.forClass(PublishRequest::class.java)
 
+    private lateinit var analysisIndicatorsSent: AnalysisIndicatorsDto
+
     @Before
     fun init() {
        ReflectionTestUtils.setField(binanceWebService, "binanceUrl", "http://localhost:$serverPort/mock/api/v3/klines")
@@ -66,18 +69,18 @@ class CucumberTestSteps {
     }
 
     @Given("the scheduled function was called")
-    fun theApplicationIsUpAndRunning() {
+    fun theScheduledFunctionWasCalled() {
         updateAnalysisScheduler.schedule1mIntervalData()
     }
 
     @When("the data is sent via sns topic")
-    fun iTypeInTheCommandLines() {
+    fun theDataIsSentViaSnsTopic() {
         Mockito.verify(sns, Mockito.times(1)).publish(publishRequestCaptor.capture())
     }
 
     @Then("the data sent should be equal {string} file")
-    fun theStdoutShouldReturnTheFollowingValues(filePath: String) {
-        val analysisIndicatorsSent: AnalysisIndicatorsDto = mapper.fromJson(publishRequestCaptor.value.message, AnalysisIndicatorsDto::class.java)
+    fun theDataSentShouldBeEqualFile(filePath: String) {
+        analysisIndicatorsSent = mapper.fromJson(publishRequestCaptor.value.message, AnalysisIndicatorsDto::class.java)
         val analysisIndicatorsExpected: AnalysisIndicatorsDto = mapper.fromJson(readJsonFromFile(filePath), AnalysisIndicatorsDto::class.java)
 
         Assertions.assertNotNull(analysisIndicatorsSent)
@@ -105,6 +108,16 @@ class CucumberTestSteps {
                 }
             }
         }
+    }
+
+    @When("the field {string} should not be null")
+    fun theFieldShouldNotBeNull(field: String) {
+        val value = AnalysisIndicatorsDto::class.memberProperties
+            .first { it.name == field }
+            .getter(analysisIndicatorsSent) as String
+
+        Assertions.assertNotNull(value)
+        Assertions.assertFalse(value.trim().isEmpty())
     }
 
     private fun readJsonFromFile(filePath: String): String {
