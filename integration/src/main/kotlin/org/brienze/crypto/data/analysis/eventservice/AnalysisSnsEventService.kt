@@ -23,6 +23,7 @@ class AnalysisSnsEventService: AnalysisEventAdapter {
     private lateinit var sns: AmazonSNS
 
     override fun sendEvent(analysisIndicators: AnalysisIndicators) {
+        //TODO add logger
         println(mapper.toJson(AnalysisIndicatorsDto(analysisIndicators)))
         println(analysisTopicArn)
 
