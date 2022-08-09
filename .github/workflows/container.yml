@@ -18,7 +18,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Test with Maven
-        run: mvn --batch-mode test
+        run: mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 
   build:
     name: Build
@@ -35,7 +35,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Test with Maven
-        run: mvn --batch-mode -DskipTests install
+        run: mvn install -DskipTests -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 
   deploy-docker:
     name: Deploy Docker image
