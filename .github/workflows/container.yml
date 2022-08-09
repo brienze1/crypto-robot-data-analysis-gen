@@ -37,9 +37,10 @@ jobs:
       - name: Test with Maven
         run: mvn install -DskipTests
 
-  build-container:
-    name: Build container
+  deploy-docker:
+    name: Deploy Docker image
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
