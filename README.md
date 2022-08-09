@@ -207,13 +207,13 @@ Note: Profiles can be used to configure the application for every environment.
 
 * [X] Implement Behaviour tests (BDD) with cucumber
 * [X] Implement Unit tests
-* [x] Implement application logic
-* [x] Add maven wrapper to run mvn commands locally
-* [x] Create Dockerfile
-* [x] Create Docker compose for local infrastructure
+* [X] Implement application logic
+* [X] Add maven wrapper to run mvn commands locally
+* [X] Create Dockerfile
+* [X] Create Docker compose for local infrastructure
 * [X] Document everything in Readme
-* [ ] Add timestamp to the event
-* [ ] Change periods from string to number in events
+* [X] Add timestamp to the event
+* [X] Change periods from string to number in events
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
