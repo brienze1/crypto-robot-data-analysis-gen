@@ -318,7 +318,7 @@ Hello! :)
 
 My name is Luis Brienze, and I'm a Software Engineer.
 
-I focus primarily on software development, but I'm also good at system architecture design, mentoring other developers,
+I focus primarily on software development, but I'm also good at system architecture, mentoring other developers,
 etc... I've been in the IT industry for 4+ years, during this time I worked for companies like Itau, Dock, Imagine
 Learning and
 EPAM.
