@@ -5,5 +5,6 @@ enum class Symbol(
     val base: String,
     val quote: String
 ) {
-    BTCUSDT("BTCUSDT", "USDT", "BTC")
+    BTCUSDT("BTCUSDT", "USDT", "BTC"),
+    BTCBRL("BTCBRL", "BRL", "BTC")
 }

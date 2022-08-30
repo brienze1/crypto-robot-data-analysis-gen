@@ -47,13 +47,13 @@ class UpdateAnalysisUseCaseTest {
 
     @Test
     fun updateTest() {
-        every { candleService.getLastCandlesByInterval(500, interval, Symbol.BTCUSDT) }.returns(listOfCandles)
+        every { candleService.getLastCandlesByInterval(500, interval, Symbol.BTCBRL) }.returns(listOfCandles)
         every { analysisService.createAnalysisIndicators(listOfCandles, interval) }.returns(analysisIndicators)
         every { analysisEventService.sendEvent(analysisIndicators) }.returns(Unit)
 
         updateAnalysisUseCase.update(Interval.SIX_HOURS)
 
-        verify(exactly = 1) { candleService.getLastCandlesByInterval(500, interval, Symbol.BTCUSDT) }
+        verify(exactly = 1) { candleService.getLastCandlesByInterval(500, interval, Symbol.BTCBRL) }
         verify(exactly = 1) { analysisService.createAnalysisIndicators(listOfCandles, interval) }
         verify(exactly = 1) { analysisEventService.sendEvent(analysisIndicators) }
     }

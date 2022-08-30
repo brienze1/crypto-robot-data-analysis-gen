@@ -44,7 +44,7 @@ class BinanceWebServiceTest {
 
         quantity = 1
         interval = Interval.ONE_DAY
-        symbol = Symbol.BTCUSDT
+        symbol = Symbol.BTCBRL
         responseValue = arrayOf(
             arrayOf(
                 "1660003200000",

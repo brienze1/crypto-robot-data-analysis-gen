@@ -24,7 +24,7 @@ class UpdateAnalysisUseCase {
         //TODO add logger
         println("Initializing " + interval.description + " with value " + interval.value)
 
-        val listOfCandles = candleService.getLastCandlesByInterval(500, interval, Symbol.BTCUSDT)
+        val listOfCandles = candleService.getLastCandlesByInterval(500, interval, Symbol.BTCBRL)
 
         val analysisIndicators = analysisService.createAnalysisIndicators(listOfCandles, interval)
 
