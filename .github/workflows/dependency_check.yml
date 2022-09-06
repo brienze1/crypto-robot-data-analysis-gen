@@ -8,26 +8,34 @@ jobs:
     name: Dependency Check
     runs-on: ubuntu-latest
     steps:
-#      - name: Setup cache
-#        uses: actions/cache@v3
-#        with:
-#          path: |
-#            ~/.cache/go-build
-#            ~/go/pkg/mod
-#          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-#          restore-keys: |
-#            ${{ runner.os }}-go-
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Go
-        uses: actions/setup-go@v3
+      - name: Setup cache
+        uses: actions/cache@v3
         with:
-          go-version: 1.19
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
 
-      - name: Write Go list
-        run: go list -json -m all > go.list
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Nancy
-        uses: sonatype-nexus-community/nancy-github-action@main
+      - name: Build project with Maven
+        run: mvn clean install
+
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          path: '.'
+          format: 'HTML'
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+          name: Depcheck report
+          path: ${{github.workspace}}/reports

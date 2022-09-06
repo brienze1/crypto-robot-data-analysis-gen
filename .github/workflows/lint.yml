@@ -8,15 +8,13 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Setup go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.19
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      with:
+        # Full git history is needed to get a proper list of changed files within `super-linter`
+        fetch-depth: 0
 
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v3
-        with:
-          version: latest
+    - name: Lint Code Base
+      uses: github/super-linter:slim-v4
+      env:
+        DEFAULT_BRANCH: main
