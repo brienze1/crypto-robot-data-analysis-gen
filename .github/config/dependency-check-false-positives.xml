@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <suppress>
+        <notes><![CDATA[
+      file name: spring-web-5.3.22.jar
+      Suppresses a given CVE for a dependency until there is a fix.
+      ]]></notes>
+        <cve>CVE-2016-1000027</cve>
+    </suppress>
+</suppressions>
