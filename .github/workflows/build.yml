@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+
+  test:
+    uses: ./.github/workflows/test.yml
+
+  dependency-check:
+    uses: ./.github/workflows/dependency_check.yml
+
+  coverage:
+    needs:
+      - test
+      - lint
+      - dependency-check
+    uses: ./.github/workflows/coverage.yml
+
+  deploy-docker:
+    needs: coverage
+    uses: ./.github/workflows/deploy_docker.yml
+    secrets:
+      username: ${{ secrets.DOCKER_HUB_USERNAME }}
+      app_name: ${{ secrets.DOCKER_HUB_APP_NAME }}
+      token: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}

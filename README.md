@@ -310,6 +310,13 @@ To run the application locally, first a local infrastructure needs to be deploye
       ./mvnw test
       ```
 
+### Known issues
+
+- docker error command not found "\r", fix:
+  - Open your shell file on NotePad++ 
+  - Click on Edit on Top bar menu, then choose EOL Conversion --> Unix(LF)
+  - Save the file.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## About me
