@@ -15,5 +15,4 @@ class AwsMockBeanConfig {
     fun amazonSQSAsyncClient(): AmazonSNS {
         return Mockito.mock(AmazonSNS::class.java)
     }
-
 }

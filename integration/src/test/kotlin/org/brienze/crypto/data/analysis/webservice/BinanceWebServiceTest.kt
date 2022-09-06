@@ -82,17 +82,19 @@ class BinanceWebServiceTest {
 
         val binanceCandleListResponse = binanceWebService.getLastCandlesByInterval(quantity, interval, symbol)
 
-        verify(exactly = 1) { restTemplate.exchange(
-            UriComponentsBuilder
-                .fromHttpUrl(binanceUrl)
-                .queryParam("limit", quantity)
-                .queryParam("interval", interval.value)
-                .queryParam("symbol", symbol)
-                .toUriString(),
-            HttpMethod.GET,
-            HttpEntity<Any>(null, null),
-            Array<Array<String>>::class.java
-        ) }
+        verify(exactly = 1) {
+            restTemplate.exchange(
+                UriComponentsBuilder
+                    .fromHttpUrl(binanceUrl)
+                    .queryParam("limit", quantity)
+                    .queryParam("interval", interval.value)
+                    .queryParam("symbol", symbol)
+                    .toUriString(),
+                HttpMethod.GET,
+                HttpEntity<Any>(null, null),
+                Array<Array<String>>::class.java
+            )
+        }
 
         val expectedBinanceCandleListResponse =
             BinanceCandleListResponseDto(response.body!!, symbol).parseToCandleList()
@@ -120,21 +122,23 @@ class BinanceWebServiceTest {
             )
         }.returns(response)
 
-        Assertions.assertThatThrownBy { binanceWebService.getLastCandlesByInterval(quantity, interval, symbol) }.isExactlyInstanceOf(
-            BinanceNullResponseBodyException::class.java
-        ).hasMessage("Response body from binance is null")
+        Assertions.assertThatThrownBy { binanceWebService.getLastCandlesByInterval(quantity, interval, symbol) }
+            .isExactlyInstanceOf(
+                BinanceNullResponseBodyException::class.java
+            ).hasMessage("Response body from binance is null")
 
-        verify(exactly = 1) { restTemplate.exchange(
-            UriComponentsBuilder
-                .fromHttpUrl(binanceUrl)
-                .queryParam("limit", quantity)
-                .queryParam("interval", interval.value)
-                .queryParam("symbol", symbol)
-                .toUriString(),
-            HttpMethod.GET,
-            HttpEntity<Any>(null, null),
-            Array<Array<String>>::class.java
-        ) }
+        verify(exactly = 1) {
+            restTemplate.exchange(
+                UriComponentsBuilder
+                    .fromHttpUrl(binanceUrl)
+                    .queryParam("limit", quantity)
+                    .queryParam("interval", interval.value)
+                    .queryParam("symbol", symbol)
+                    .toUriString(),
+                HttpMethod.GET,
+                HttpEntity<Any>(null, null),
+                Array<Array<String>>::class.java
+            )
+        }
     }
-
 }

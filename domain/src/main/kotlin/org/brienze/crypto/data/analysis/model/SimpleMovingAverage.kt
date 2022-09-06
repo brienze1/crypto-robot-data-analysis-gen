@@ -13,5 +13,4 @@ class SimpleMovingAverage(
     init {
         value = calculateSimpleMovingAverage(totalValue, period).setScale(5, RoundingMode.UP)
     }
-
 }

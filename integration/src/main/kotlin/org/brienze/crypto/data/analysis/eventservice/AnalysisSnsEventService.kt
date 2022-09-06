@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-class AnalysisSnsEventService: AnalysisEventAdapter {
+class AnalysisSnsEventService : AnalysisEventAdapter {
 
     @Value("\${event.analysis.topic.arn}")
     private lateinit var analysisTopicArn: String
@@ -23,16 +23,16 @@ class AnalysisSnsEventService: AnalysisEventAdapter {
     private lateinit var sns: AmazonSNS
 
     override fun sendEvent(analysisIndicators: AnalysisIndicators) {
-        //TODO add logger
+        // TODO add logger
         println(mapper.toJson(AnalysisIndicatorsDto(analysisIndicators)))
         println(analysisTopicArn)
 
         val result = sns.publish(
             PublishRequest()
-            .withMessage(mapper.toJson(AnalysisIndicatorsDto(analysisIndicators)))
-            .withTopicArn(analysisTopicArn))
+                .withMessage(mapper.toJson(AnalysisIndicatorsDto(analysisIndicators)))
+                .withTopicArn(analysisTopicArn)
+        )
 
         println(mapper.toJson(result))
     }
-
 }

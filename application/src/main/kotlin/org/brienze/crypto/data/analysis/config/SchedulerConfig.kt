@@ -7,5 +7,4 @@ import org.springframework.scheduling.annotation.EnableScheduling
 @Configuration
 @EnableScheduling
 @Profile("!cucumber-test")
-class SchedulerConfig {
-}
+class SchedulerConfig

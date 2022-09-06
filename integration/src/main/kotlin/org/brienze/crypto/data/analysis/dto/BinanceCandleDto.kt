@@ -27,17 +27,21 @@ class BinanceCandleDto(
     private val buyQuoteAssetVolume: BigDecimal
 
     init {
-         openTime = toLocalDateTime(values.getOrElse(0) { throw BinanceCandleMissingValueException("openTime") })
-         open = values.getOrElse(1) { throw BinanceCandleMissingValueException("open") }.toBigDecimal()
-         high = values.getOrElse(2) { throw BinanceCandleMissingValueException("high") }.toBigDecimal()
-         low = values.getOrElse(3) { throw BinanceCandleMissingValueException("low") }.toBigDecimal()
-         close = values.getOrElse(4) { throw BinanceCandleMissingValueException("close") }.toBigDecimal()
-         volume = values.getOrElse(5) { throw BinanceCandleMissingValueException("volume") }.toBigDecimal()
-         closeTime = toLocalDateTime(values.getOrElse(6) { throw BinanceCandleMissingValueException("closeTime") })
-         quoteAssetVolume = values.getOrElse(7) { throw BinanceCandleMissingValueException("quoteAssetVolume") }.toBigDecimal()
-         numberOfTrades = values.getOrElse(8) { throw BinanceCandleMissingValueException("numberOfTrades") }.toBigInteger()
-         buyBaseAssetVolume = values.getOrElse(9) { throw BinanceCandleMissingValueException("buyBaseAssetVolume") }.toBigDecimal()
-         buyQuoteAssetVolume = values.getOrElse(10) { throw BinanceCandleMissingValueException("buyQuoteAssetVolume") }.toBigDecimal()
+        openTime = toLocalDateTime(values.getOrElse(0) { throw BinanceCandleMissingValueException("openTime") })
+        open = values.getOrElse(1) { throw BinanceCandleMissingValueException("open") }.toBigDecimal()
+        high = values.getOrElse(2) { throw BinanceCandleMissingValueException("high") }.toBigDecimal()
+        low = values.getOrElse(3) { throw BinanceCandleMissingValueException("low") }.toBigDecimal()
+        close = values.getOrElse(4) { throw BinanceCandleMissingValueException("close") }.toBigDecimal()
+        volume = values.getOrElse(5) { throw BinanceCandleMissingValueException("volume") }.toBigDecimal()
+        closeTime = toLocalDateTime(values.getOrElse(6) { throw BinanceCandleMissingValueException("closeTime") })
+        quoteAssetVolume =
+            values.getOrElse(7) { throw BinanceCandleMissingValueException("quoteAssetVolume") }.toBigDecimal()
+        numberOfTrades =
+            values.getOrElse(8) { throw BinanceCandleMissingValueException("numberOfTrades") }.toBigInteger()
+        buyBaseAssetVolume =
+            values.getOrElse(9) { throw BinanceCandleMissingValueException("buyBaseAssetVolume") }.toBigDecimal()
+        buyQuoteAssetVolume =
+            values.getOrElse(10) { throw BinanceCandleMissingValueException("buyQuoteAssetVolume") }.toBigDecimal()
     }
 
     private fun toLocalDateTime(millis: String): LocalDateTime {
@@ -61,5 +65,4 @@ class BinanceCandleDto(
             symbol.quote
         )
     }
-
 }

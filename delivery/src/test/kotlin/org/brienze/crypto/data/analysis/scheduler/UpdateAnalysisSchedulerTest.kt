@@ -73,5 +73,4 @@ class UpdateAnalysisSchedulerTest {
 
         verify(exactly = 1) { updateAnalysisUseCase.update(Interval.ONE_DAY) }
     }
-
 }

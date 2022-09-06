@@ -1,6 +1,6 @@
-<div id="top"></div>
-
 # Crypto Data Analysis Generator
+
+<div id="top"></div>
 
 1. [About the Project](#about-the-project)
     1. [Input](#input)
@@ -70,7 +70,7 @@ Analysis indicators:
 
 Example of how the message should look like:
 
-```
+```json
 {
   "interval": "SIX_HOURS",
   "analysisData": {
@@ -176,7 +176,7 @@ Note: Profiles can be used to configure the application for every environment.
 * [Spring Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html) Used to create health
   check endpoints
 * [Spring AOP](https://www.baeldung.com/spring-aop) Used to integrate aspect oriented programing with error handlers
-* [Spring WebFlux](https://www.baeldung.com/spring-aop) Used to integrate web related dependencies for api calls
+* [Spring WebFlux](https://www.baeldung.com/spring-aop) Used to integrate web related dependencies for API calls
 * [SNS](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/examples-simple-notification-service.html) Used
   to integrate with AWS SNS
 * [Gson](https://github.com/google/gson) Used as Json parser
@@ -214,6 +214,7 @@ Note: Profiles can be used to configure the application for every environment.
 * [X] Document everything in Readme
 * [X] Add timestamp to the event
 * [X] Change periods from string to number in events
+* [ ] Add logger lib and logs
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -222,34 +223,34 @@ Note: Profiles can be used to configure the application for every environment.
 ### Prerequisites
 
 - Install version 18 of the JDK
-    - [Manual](https://adoptium.net/?variant=openjdk18)
-    - [IntelliJ](https://www.jetbrains.com/help/idea/sdk.html#jdk)
-    - [Homebrew](https://docs.brew.sh/Installation)
-      ```bash
-      brew install openjdk@18
-      ```
+  - [Manual](https://adoptium.net/?variant=openjdk18)
+  - [IntelliJ](https://www.jetbrains.com/help/idea/sdk.html#jdk)
+  - [Homebrew](https://docs.brew.sh/Installation)
+    ```bash
+    brew install openjdk@18
+    ```
 
 - Set the `JAVA_HOME` environment variable to the path where your JDK is located
-    - [Windows](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)
-    - macOS/Linux/WSL
-      ```bash
-      echo 'export JAVA_HOME=/path/to/jdk' >> ~/.bashrc 
-      ```
+  - [Windows](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)
+  - macOS/Linux/WSL
+    ```bash
+    echo 'export JAVA_HOME=/path/to/jdk' >> ~/.bashrc 
+    ```
 
 - Install Docker (Optional)
-    - [Windows/macOS/Linux/WSL](https://www.docker.com/get-started/)
+  - [Windows/macOS/Linux/WSL](https://www.docker.com/get-started/)
 
 ### Installation
 
 - Run the following to install dependencies and compile the project:
-    - Windows
-      ```bash
-      mvnw.bat clean install
-      ```
-    - macOS/Linux/WSL
-      ```bash
-      ./mvnw clean install
-      ```
+  - Windows
+    ```bash
+    mvnw.bat clean install
+    ```
+  - macOS/Linux/WSL
+    ```bash
+    ./mvnw clean install
+    ```
 
 ### Requirements
 
@@ -258,26 +259,26 @@ To run the application locally, first a local infrastructure needs to be deploye
 #### Deploying Local Infrastructure
 
 - Start the required infrastructure via localstack using docker compose command:
-    - Windows/macOS/Linux/WSL
-      ```bash
-      docker-compose up
-      ```
+  - Windows/macOS/Linux/WSL
+    ```bash
+    docker-compose up
+    ```
 
 - To stop localstack:
-    - Windows/macOS/Linux/WSL
-      ```bash
-      docker-compose down
-      ```
+  - Windows/macOS/Linux/WSL
+    ```bash
+    docker-compose down
+    ```
 
 ### Usage
 
 #### Manual Input
 
 - Start the compiled application:
-    - Windows/macOS/Linux/WSL
-      ```bash
-      java -jar ./application/target/crypto-robot-analysis-generator.jar --spring.profiles.active=local
-      ```
+  - Windows/macOS/Linux/WSL
+    ```bash
+    java -jar ./application/target/crypto-robot-analysis-generator.jar --spring.profiles.active=local
+    ```
 
 - To stop the application just press Ctrl+C
 
@@ -286,34 +287,44 @@ To run the application locally, first a local infrastructure needs to be deploye
 - In case you want to use a Docker container to run the application first you need to build the Docker image from
   Dockerfile:
 - Note: This may take a while to build (close to 5 min)
-    - Windows/macOS/Linux/WSL
-      ```bash
-      docker build -t crypto-robot-data-analysis-gen .
-      ```
+  - Windows/macOS/Linux/WSL
+    ```bash
+    docker build -t crypto-robot-data-analysis-gen .
+    ```
 
 - And then run the new created image:
-    - Windows/macOS/Linux/WSL
-      ```bash
-      docker run --network="host" -d -it -e SPRING_PROFILES_ACTIVE=docker crypto-robot-data-analysis-gen:latest bash -c \
-      "java -jar application/target/crypto-robot-analysis-generator.jar --spring.profiles.active=docker"
-      ```
+  - Windows/macOS/Linux/WSL
+    ```bash
+    docker run --network="host" -d -it -e SPRING_PROFILES_ACTIVE=docker crypto-robot-data-analysis-gen:latest bash -c \
+    "java -jar application/target/crypto-robot-analysis-generator.jar --spring.profiles.active=docker"
+    ```
 
 ### Testing
 
 - To run the tests just type the command bellow in terminal:
-    - Windows
-      ```bash
-      mvnw.bat test
-      ```
-    - macOS/Linux/WSL
-      ```bash
-      ./mvnw test
-      ```
+  - Windows
+    ```bash
+    mvnw.bat test
+    ```
+  - macOS/Linux/WSL
+    ```bash
+    ./mvnw test
+    ```
+
+- To run lint just type the command bellow in terminal:
+  - Windows
+    ```bash
+    mvnw.bat antrun:run@ktlint-format
+    ```
+  - macOS/Linux/WSL
+    ```bash
+    ./mvnw antrun:run@ktlint-format
+    ```
 
 ### Known issues
 
 - docker error command not found "\r", fix:
-  - Open your shell file on NotePad++ 
+  - Open your shell file on NotePad++
   - Click on Edit on Top bar menu, then choose EOL Conversion --> Unix(LF)
   - Save the file.
 
@@ -333,7 +344,7 @@ EPAM.
 I graduated from UNESP studying Automation and Control Engineering in 2022, and I also took multiple courses on Udemy
 and Alura.
 
-My main stack is Java, but I'm also pretty good working with Kotlin and Typescript (both server side).
+My main stack is Java, but I'm also pretty good working with Kotlin and TypeScript (both server side).
 I have quite a good knowledge of AWS Cloud, and I'm also very conformable working with Docker.
 
 During my career, while working with QA's, I've also gained alot of valuable experience with testing applications in
@@ -341,6 +352,6 @@ general from unit/integrated
 testing using TDD and BDD, to performance testing apps with JMeter for example.
 
 If you want to talk to me, please fell free to reach me anytime at [LinkedIn](https://www.linkedin.com/in/luisbrienze/)
-or [e-mail](lfbrienze@gmail.com).
+or [email](lfbrienze@gmail.com).
 
 <p align="right">(<a href="#top">back to top</a>)</p>

@@ -16,7 +16,10 @@ abstract class MovingAverage(
     lateinit var indicator: Indicator
         protected set
 
-    fun calculateIndicator(lastMovingAverages: Map<Period, MovingAverage>, currentMovingAverages: Map<Period, MovingAverage>) {
+    fun calculateIndicator(
+        lastMovingAverages: Map<Period, MovingAverage>,
+        currentMovingAverages: Map<Period, MovingAverage>
+    ) {
         var indicatorValue = 0
         if (lastMovingAverages.getValue(this.period).currentCandle.close < value && currentCandle.close > value) {
             indicatorValue++
@@ -24,17 +27,29 @@ abstract class MovingAverage(
             indicatorValue--
         }
 
-        for(period: Period in Period.values()) {
-            if(this.period.value < period.value) {
-                if(lastMovingAverages.getValue(this.period).value < lastMovingAverages.getValue(period).value && value > currentMovingAverages.getValue(period).value) {
+        for (period: Period in Period.values()) {
+            if (this.period.value < period.value) {
+                if (lastMovingAverages.getValue(this.period).value < lastMovingAverages.getValue(period).value && value > currentMovingAverages.getValue(
+                        period
+                    ).value
+                ) {
                     indicatorValue += 2
-                } else if(lastMovingAverages.getValue(this.period).value > lastMovingAverages.getValue(period).value && value < currentMovingAverages.getValue(period).value) {
+                } else if (lastMovingAverages.getValue(this.period).value > lastMovingAverages.getValue(period).value && value < currentMovingAverages.getValue(
+                        period
+                    ).value
+                ) {
                     indicatorValue -= 2
                 }
-            } else if(this.period.value > period.value) {
-                if(lastMovingAverages.getValue(this.period).value < lastMovingAverages.getValue(period).value && value > currentMovingAverages.getValue(period).value) {
+            } else if (this.period.value > period.value) {
+                if (lastMovingAverages.getValue(this.period).value < lastMovingAverages.getValue(period).value && value > currentMovingAverages.getValue(
+                        period
+                    ).value
+                ) {
                     indicatorValue -= 2
-                } else if(lastMovingAverages.getValue(this.period).value > lastMovingAverages.getValue(period).value && value < currentMovingAverages.getValue(period).value) {
+                } else if (lastMovingAverages.getValue(this.period).value > lastMovingAverages.getValue(period).value && value < currentMovingAverages.getValue(
+                        period
+                    ).value
+                ) {
                     indicatorValue += 2
                 }
             }
@@ -53,8 +68,14 @@ abstract class MovingAverage(
         return totalValue.divide(BigDecimal(period.value))
     }
 
-    protected fun calculateExponentialMovingAverage(totalValue: BigDecimal, period: Period, lastCandle: Candle): BigDecimal {
-        return Factor.SMOOTHENING_FACTOR.value.times(lastCandle.close) + (BigDecimal.ONE.minus(Factor.SMOOTHENING_FACTOR.value)) * calculateSimpleMovingAverage(totalValue, period)
+    protected fun calculateExponentialMovingAverage(
+        totalValue: BigDecimal,
+        period: Period,
+        lastCandle: Candle
+    ): BigDecimal {
+        return Factor.SMOOTHENING_FACTOR.value.times(lastCandle.close) + (BigDecimal.ONE.minus(Factor.SMOOTHENING_FACTOR.value)) * calculateSimpleMovingAverage(
+            totalValue,
+            period
+        )
     }
-
 }

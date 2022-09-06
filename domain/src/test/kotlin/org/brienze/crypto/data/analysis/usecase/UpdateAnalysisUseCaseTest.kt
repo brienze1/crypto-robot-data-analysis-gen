@@ -57,5 +57,4 @@ class UpdateAnalysisUseCaseTest {
         verify(exactly = 1) { analysisService.createAnalysisIndicators(listOfCandles, interval) }
         verify(exactly = 1) { analysisEventService.sendEvent(analysisIndicators) }
     }
-
 }

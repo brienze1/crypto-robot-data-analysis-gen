@@ -14,5 +14,4 @@ class ExponentialMovingAverage(
     init {
         value = calculateExponentialMovingAverage(totalValue, period, lastCandle).setScale(5, RoundingMode.UP)
     }
-
 }

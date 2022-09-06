@@ -19,11 +19,10 @@ class BinanceCandleListResponseDto(
     fun parseToCandleList(): List<Candle> {
         val candleList = mutableListOf<Candle>()
 
-        for(binanceCandle: BinanceCandleDto in candles){
+        for (binanceCandle: BinanceCandleDto in candles) {
             candleList.add(binanceCandle.toCandle())
         }
 
         return candleList
     }
-
 }

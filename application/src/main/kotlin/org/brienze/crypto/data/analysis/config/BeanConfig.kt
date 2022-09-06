@@ -14,7 +14,6 @@ import reactor.netty.http.client.HttpClient
 import java.time.Duration
 import java.util.concurrent.TimeUnit
 
-
 @Configuration
 class BeanConfig {
 
@@ -42,5 +41,4 @@ class BeanConfig {
     fun restTemplate(): RestTemplate {
         return RestTemplateBuilder().build()
     }
-
 }

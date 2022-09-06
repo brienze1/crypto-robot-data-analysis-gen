@@ -20,5 +20,4 @@ class BinanceApiMock {
     ): String {
         return responseJson
     }
-
 }

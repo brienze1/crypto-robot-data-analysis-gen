@@ -9,13 +9,12 @@ class AnalysisDataDto(
     val simpleMovingAverages: List<MovingAverageDto> = analysisData.simpleMovingAverages
         .values
         .sortedBy { it.period }
-        .map { MovingAverageDto(it.period.value, it.value, it.indicator)}
+        .map { MovingAverageDto(it.period.value, it.value, it.indicator) }
         .toList()
 
     val exponentialMovingAverages: List<MovingAverageDto> = analysisData.exponentialMovingAverages
         .values
         .sortedBy { it.period }
-        .map { MovingAverageDto(it.period.value, it.value, it.indicator)}
+        .map { MovingAverageDto(it.period.value, it.value, it.indicator) }
         .toList()
-
 }

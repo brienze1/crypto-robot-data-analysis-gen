@@ -29,10 +29,9 @@ import java.io.InputStreamReader
 import java.io.Reader
 import kotlin.reflect.full.memberProperties
 
-
 @ContextConfiguration
 @CucumberContextConfiguration
-@SpringBootTest(classes = [Application::class], webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = [Application::class], webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CucumberTestSteps {
 
     @LocalServerPort
@@ -60,7 +59,7 @@ class CucumberTestSteps {
 
     @Before
     fun init() {
-       ReflectionTestUtils.setField(binanceWebService, "binanceUrl", "http://localhost:$serverPort/mock/api/v3/klines")
+        ReflectionTestUtils.setField(binanceWebService, "binanceUrl", "http://localhost:$serverPort/mock/api/v3/klines")
     }
 
     @Given("the binance-api returns the data contained in {string} file from it's api:")
@@ -81,7 +80,8 @@ class CucumberTestSteps {
     @Then("the data sent should be equal {string} file")
     fun theDataSentShouldBeEqualFile(filePath: String) {
         analysisIndicatorsSent = mapper.fromJson(publishRequestCaptor.value.message, AnalysisIndicatorsDto::class.java)
-        val analysisIndicatorsExpected: AnalysisIndicatorsDto = mapper.fromJson(readJsonFromFile(filePath), AnalysisIndicatorsDto::class.java)
+        val analysisIndicatorsExpected: AnalysisIndicatorsDto =
+            mapper.fromJson(readJsonFromFile(filePath), AnalysisIndicatorsDto::class.java)
 
         Assertions.assertNotNull(analysisIndicatorsSent)
         Assertions.assertNotNull(analysisIndicatorsSent.analysisData)
@@ -91,18 +91,18 @@ class CucumberTestSteps {
         Assertions.assertFalse(analysisIndicatorsSent.analysisData.simpleMovingAverages.isEmpty())
         Assertions.assertEquals(analysisIndicatorsExpected.interval, analysisIndicatorsSent.interval)
 
-        for(movingAverage: MovingAverageDto in analysisIndicatorsSent.analysisData.simpleMovingAverages) {
-            for(movingAverageExpected: MovingAverageDto in analysisIndicatorsExpected.analysisData.simpleMovingAverages) {
-                if(movingAverageExpected.period == movingAverage.period){
+        for (movingAverage: MovingAverageDto in analysisIndicatorsSent.analysisData.simpleMovingAverages) {
+            for (movingAverageExpected: MovingAverageDto in analysisIndicatorsExpected.analysisData.simpleMovingAverages) {
+                if (movingAverageExpected.period == movingAverage.period) {
                     Assertions.assertEquals(movingAverageExpected.indicator, movingAverage.indicator)
                     Assertions.assertEquals(movingAverageExpected.value, movingAverage.value)
                 }
             }
         }
 
-        for(movingAverage: MovingAverageDto in analysisIndicatorsSent.analysisData.exponentialMovingAverages) {
-            for(movingAverageExpected: MovingAverageDto in analysisIndicatorsExpected.analysisData.exponentialMovingAverages) {
-                if(movingAverageExpected.period == movingAverage.period){
+        for (movingAverage: MovingAverageDto in analysisIndicatorsSent.analysisData.exponentialMovingAverages) {
+            for (movingAverageExpected: MovingAverageDto in analysisIndicatorsExpected.analysisData.exponentialMovingAverages) {
+                if (movingAverageExpected.period == movingAverage.period) {
                     Assertions.assertEquals(movingAverageExpected.indicator, movingAverage.indicator)
                     Assertions.assertEquals(movingAverageExpected.value, movingAverage.value)
                 }
@@ -121,9 +121,9 @@ class CucumberTestSteps {
     }
 
     private fun readJsonFromFile(filePath: String): String {
-        val reader: Reader = InputStreamReader(Thread.currentThread().contextClassLoader.getResourceAsStream(filePath) as InputStream)
+        val reader: Reader =
+            InputStreamReader(Thread.currentThread().contextClassLoader.getResourceAsStream(filePath) as InputStream)
         val jsonNode = mapper.fromJson(reader, JsonElement::class.java)
         return mapper.toJson(jsonNode)
     }
-
 }

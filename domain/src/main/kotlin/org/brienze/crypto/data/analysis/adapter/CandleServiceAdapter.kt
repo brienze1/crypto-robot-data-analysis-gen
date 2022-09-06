@@ -7,5 +7,4 @@ import org.brienze.crypto.data.analysis.model.Candle
 interface CandleServiceAdapter {
 
     fun getLastCandlesByInterval(quantity: Int, interval: Interval, symbol: Symbol): List<Candle>
-
 }

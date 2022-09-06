@@ -40,5 +40,4 @@ class ErrorHandlerTest {
 
         Assertions.assertTrue(outContent.toString().contains(mapper.toJson(ErrorResponseDto(error))))
     }
-
 }

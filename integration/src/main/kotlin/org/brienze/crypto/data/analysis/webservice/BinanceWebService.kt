@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
-import java.util.*
 
 @Component
 class BinanceWebService : CandleServiceAdapter {
@@ -29,12 +28,8 @@ class BinanceWebService : CandleServiceAdapter {
         val request = HttpEntity<Any>(null, null)
 
         val response: ResponseEntity<Array<Array<String>>> = restTemplate.exchange(
-            UriComponentsBuilder
-                .fromHttpUrl(binanceUrl)
-                .queryParam("limit", quantity)
-                .queryParam("interval", interval.value)
-                .queryParam("symbol", symbol)
-                .toUriString(),
+            UriComponentsBuilder.fromHttpUrl(binanceUrl).queryParam("limit", quantity)
+                .queryParam("interval", interval.value).queryParam("symbol", symbol).toUriString(),
             HttpMethod.GET,
             request,
             Array<Array<String>>::class.java
@@ -48,5 +43,4 @@ class BinanceWebService : CandleServiceAdapter {
 
         return binanceCandleListResponseDto.parseToCandleList().sortedByDescending { candle -> candle.closeTime }
     }
-
 }

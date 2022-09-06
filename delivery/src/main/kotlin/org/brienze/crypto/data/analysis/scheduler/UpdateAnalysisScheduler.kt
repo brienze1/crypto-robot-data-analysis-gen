@@ -55,5 +55,4 @@ class UpdateAnalysisScheduler {
     fun schedule1dIntervalData() {
         updateAnalysisUseCase.update(Interval.ONE_DAY)
     }
-
 }

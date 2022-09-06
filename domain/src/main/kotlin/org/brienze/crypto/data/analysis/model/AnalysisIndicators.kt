@@ -16,13 +16,22 @@ class AnalysisIndicators(
     init {
         currentAnalysisData.simpleMovingAverages
             .values
-            .forEach { simpleMovingAverage -> simpleMovingAverage.calculateIndicator(lastAnalysisData.simpleMovingAverages ,currentAnalysisData.simpleMovingAverages) }
+            .forEach { simpleMovingAverage ->
+                simpleMovingAverage.calculateIndicator(
+                    lastAnalysisData.simpleMovingAverages,
+                    currentAnalysisData.simpleMovingAverages
+                )
+            }
         currentAnalysisData.exponentialMovingAverages
             .values
-            .forEach { exponentialMovingAverage -> exponentialMovingAverage.calculateIndicator(lastAnalysisData.exponentialMovingAverages, currentAnalysisData.exponentialMovingAverages) }
+            .forEach { exponentialMovingAverage ->
+                exponentialMovingAverage.calculateIndicator(
+                    lastAnalysisData.exponentialMovingAverages,
+                    currentAnalysisData.exponentialMovingAverages
+                )
+            }
 
         analysisData = currentAnalysisData
         timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"))
     }
-
 }

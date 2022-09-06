@@ -10,6 +10,4 @@ class AnalysisIndicatorsDto(
     val interval: Interval = analysisIndicators.interval
     val analysisData: AnalysisDataDto = AnalysisDataDto(analysisIndicators.analysisData)
     val timestamp: String = analysisIndicators.timestamp
-
 }
-

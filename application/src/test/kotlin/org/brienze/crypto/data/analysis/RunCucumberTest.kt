@@ -10,5 +10,4 @@ import org.junit.runner.RunWith
     glue = ["org.brienze.crypto.data.analysis.steps"],
     plugin = ["pretty"]
 )
-class RunCucumberTest {
-}
+class RunCucumberTest

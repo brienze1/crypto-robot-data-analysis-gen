@@ -37,5 +37,4 @@ class AwsBeanConfig {
         return AmazonSNSClient.builder()
             .build()
     }
-
 }

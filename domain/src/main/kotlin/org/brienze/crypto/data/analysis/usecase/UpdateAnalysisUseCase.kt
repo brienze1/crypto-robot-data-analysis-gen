@@ -21,7 +21,7 @@ class UpdateAnalysisUseCase {
     private lateinit var analysisEventService: AnalysisEventAdapter
 
     fun update(interval: Interval) {
-        //TODO add logger
+        // TODO add logger
         println("Initializing " + interval.description + " with value " + interval.value)
 
         val listOfCandles = candleService.getLastCandlesByInterval(500, interval, Symbol.BTCBRL)
@@ -30,5 +30,4 @@ class UpdateAnalysisUseCase {
 
         analysisEventService.sendEvent(analysisIndicators)
     }
-
 }

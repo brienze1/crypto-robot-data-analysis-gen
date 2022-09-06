@@ -61,5 +61,4 @@ class AnalysisServiceTest {
 
         Assertions.assertThat(analysisIndicators).usingRecursiveComparison().isEqualTo(expectedAnalysisIndicators)
     }
-
 }

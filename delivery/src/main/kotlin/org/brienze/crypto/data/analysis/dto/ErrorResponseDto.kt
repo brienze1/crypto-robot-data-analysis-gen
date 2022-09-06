@@ -11,5 +11,4 @@ class ErrorResponseDto(
         message = ex.message.toString()
         exception = ex.javaClass.toString()
     }
-
 }
