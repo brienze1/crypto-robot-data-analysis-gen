@@ -18,4 +18,4 @@ jobs:
           distribution: 'adopt'
 
       - name: Check linter
-        run: mvn antrun:run@ktlint
+        run: mvn antrun:run@ktlint -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
