@@ -17,5 +17,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      - name: Build code
+        run: mvn install -DskipTests
+
       - name: Check linter
         run: mvn antrun:run@ktlint -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
