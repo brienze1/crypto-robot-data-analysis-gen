@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component
 class ErrorHandler {
 
     @Autowired
-    lateinit var mapper: Gson
+    private lateinit var mapper: Gson
 
     @AfterThrowing(
         pointcut = "execution(* org.brienze.crypto.data.analysis.scheduler.UpdateAnalysisScheduler.*(..))",
