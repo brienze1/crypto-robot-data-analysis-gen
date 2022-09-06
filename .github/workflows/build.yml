@@ -22,6 +22,8 @@ jobs:
       - lint
       - dependency-check
     uses: ./.github/workflows/coverage.yml
+    secrets:
+      repo_token: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
   deploy-docker:
     needs: coverage

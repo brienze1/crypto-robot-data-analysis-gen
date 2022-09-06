@@ -2,6 +2,9 @@ name: Coverage
 
 on:
   workflow_call:
+    secrets:
+      repo_token:
+        required: true
 
 jobs:
   coverage:
@@ -17,10 +20,4 @@ jobs:
           distribution: 'adopt'
 
       - name: Generate coverage report
-        run: mvn clean install -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
-
-      - name: Coveralls
-        uses: coverallsapp/github-action@v1.1.2
-        with:
-          github-token: ${{ secrets.github_token }}
-          path-to-lcov: ./report-aggregator/target/site/jacoco-aggregate/jacoco.csv
+        run: mvn clean install coveralls:report -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -DrepoToken=${{ secrets.repo_token }}
