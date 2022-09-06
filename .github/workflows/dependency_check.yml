@@ -24,7 +24,7 @@ jobs:
           args: >
             --failOnCVSS 7
             --enableRetired
-
+            --suppression ./.github/config/dependency-check-false-positives.xml
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
