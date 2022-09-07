@@ -23,8 +23,9 @@ jobs:
       - dependency-check
     uses: ./.github/workflows/coverage.yml
     secrets:
-      username: ${{ secrets.USERNAME }}
+      name: ${{ secrets.Name }}
       email: ${{ secrets.EMAIL }}
+      username: ${{ secrets.USERNAME }}
 
   deploy-docker:
     needs: coverage
