@@ -1,6 +1,9 @@
+![Coverage](.github/badges/jacoco.svg)
+
 # Crypto Data Analysis Generator
 
 <div id="top"></div>
+
 
 1. [About the Project](#about-the-project)
     1. [Input](#input)
