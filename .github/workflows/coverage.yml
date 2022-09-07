@@ -20,4 +20,4 @@ jobs:
           distribution: 'adopt'
 
       - name: Generate coverage report
-        run: mvn clean install org.eluder.coveralls:coveralls-maven-plugin:report -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -DrepoToken=${{ secrets.repo_token }}
+        run: mvn clean install -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
