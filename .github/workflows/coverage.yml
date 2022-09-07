@@ -26,5 +26,5 @@ jobs:
         - uses: actions/checkout@master
         - uses: codecov/codecov-action@v3
           with:
-            files: ./report-aggregator/target/site/jacoco-aggregate/jacoco.csv
+            files: ./report-aggregator/target/site/jacoco-aggregate/jacoco.xml
             verbose: true # optional (default = false)
