@@ -1,4 +1,4 @@
-![Coverage](.github/badges/jacoco.svg)
+![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/brienze1/crypto-robot-data-analysis-gen/main/.github/badges/jacoco.json)
 
 # Crypto Data Analysis Generator
 
