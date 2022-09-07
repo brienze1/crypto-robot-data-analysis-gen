@@ -25,7 +25,6 @@ jobs:
     secrets:
       name: ${{ secrets.Name }}
       email: ${{ secrets.EMAIL }}
-      username: ${{ secrets.USERNAME }}
 
   deploy-docker:
     needs: coverage

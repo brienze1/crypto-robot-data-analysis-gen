@@ -7,8 +7,6 @@ on:
         required: true
       email:
         required: true
-      username:
-        required: true
 
 jobs:
   coverage:
@@ -37,7 +35,7 @@ jobs:
       - name: Commit the badge
         run: |
           if [[ `git status --porcelain` ]]; then
-            git config remote.origin.url 'https://${{ secrets.github_token }}@github.com/${{ secrets.username }}/repo/'
+            git config remote.origin.url https://github.com/<username>/<repo>.git
             git config --global user.name '${{ secrets.name }}'
             git config --global user.email '${{ secrets.email }}'
             git add -A
