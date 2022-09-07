@@ -1,3 +1,7 @@
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/brienze1/crypto-robot-data-analysis-gen/blob/main/LICENSE)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/brienze1/crypto-robot-data-analysis-gen)
+![Build](https://img.shields.io/github/workflow/status/brienze1/crypto-robot-data-analysis-gen/Build?label=Build)
 [![codecov](https://codecov.io/gh/brienze1/crypto-robot-data-analysis-gen/branch/main/graph/badge.svg?token=HGU5XDSCK5)](https://codecov.io/gh/brienze1/crypto-robot-data-analysis-gen)
 
 # Crypto Data Analysis Generator
