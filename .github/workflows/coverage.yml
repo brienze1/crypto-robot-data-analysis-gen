@@ -19,9 +19,8 @@ jobs:
       - name: Generate coverage report
         run: mvn clean install -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 
-      steps:
-        - uses: actions/checkout@master
-        - uses: codecov/codecov-action@v3
-          with:
-            files: ./report-aggregator/target/site/jacoco-aggregate/jacoco.xml
-            verbose: true # optional (default = false)
+      - name: Send coverage to codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./report-aggregator/target/site/jacoco-aggregate/jacoco.xml
+          verbose: true # optional (default = false)
