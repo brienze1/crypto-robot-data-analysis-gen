@@ -22,9 +22,6 @@ jobs:
       - lint
       - dependency-check
     uses: ./.github/workflows/coverage.yml
-    secrets:
-      name: ${{ secrets.Name }}
-      email: ${{ secrets.EMAIL }}
 
   deploy-docker:
     needs: coverage
