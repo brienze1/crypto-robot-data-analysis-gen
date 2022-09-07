@@ -27,12 +27,19 @@ jobs:
         with:
           jacoco-csv-file: report-aggregator/target/site/jacoco-aggregate/jacoco.csv
 
-      - name: Commit and push the badge (if it changed)
+      - name: Commit the badge (if it changed)
         uses: EndBug/add-and-commit@v7
         with:
           default_author: github_actions
           message: 'commit badge'
           add: '*.svg'
+          push: false
+
+      - name: Push to github
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
       - name: Upload JaCoCo coverage report
         uses: actions/upload-artifact@v2
