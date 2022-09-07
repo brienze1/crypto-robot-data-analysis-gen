@@ -26,6 +26,7 @@ jobs:
         uses: cicirello/jacoco-badge-generator@v2
         with:
           jacoco-csv-file: ./report-aggregator/target/site/jacoco-aggregate/jacoco.csv
+          generate-coverage-badge: false
           generate-coverage-endpoint: true
 
 #      - name: Commit the badge (if it changed)
