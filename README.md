@@ -1,4 +1,4 @@
-![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/brienze1/crypto-robot-data-analysis-gen/main/.github/badges/jacoco.json)
+[![codecov](https://codecov.io/gh/brienze1/crypto-robot-data-analysis-gen/branch/main/graph/badge.svg?token=HGU5XDSCK5)](https://codecov.io/gh/brienze1/crypto-robot-data-analysis-gen)
 
 # Crypto Data Analysis Generator
 
