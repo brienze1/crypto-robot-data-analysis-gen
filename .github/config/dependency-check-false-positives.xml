@@ -7,4 +7,11 @@
       ]]></notes>
         <cve>CVE-2016-1000027</cve>
     </suppress>
+    <suppress>
+        <notes><![CDATA[
+      file name: cucumber-core-7.8.1.jar
+      Suppresses a given CVE for a dependency until there is a fix.
+      ]]></notes>
+        <cve>CVE-2022-42003</cve>
+    </suppress>
 </suppressions>
